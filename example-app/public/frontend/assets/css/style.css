@@ -16,6 +16,10 @@ body{
   font-size: 0.9rem;
 }
 
+.form-row a{
+    color: white;
+}
+
 .cf-container {
   margin-top: 5%;
 }
@@ -38,7 +42,7 @@ body{
   font-size: 0.9rem;
 }
 #datadiri{
-  display: none;
+  display: block;
 }
 #datasuis{
   display: none;
@@ -47,10 +51,30 @@ body{
   display: none;
 }
 #dataibu{
-  display: block;
+  display: none;
 }
+#saudarasekolah{
+    display: none;
+  }
+  #perkara{
+    display: none;
+  }
 .flex-row{
   display: flex;
   margin-bottom: 20px;
+}
+.jk-space{
+    display: flex;
+    justify-content: space-around;
+}
+
+canvas#signature-pad {
+    background: #fff;
+    width: 100%;
+    height: 20vh;
+    cursor: crosshair;
+}
+.kartu-skck{
+    background-color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

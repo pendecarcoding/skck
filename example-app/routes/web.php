@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SidikJariController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,13 @@ use App\Http\Controllers\FrontendController;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/pendaftaran', [FrontendController::class, 'pendaftaran'])->name('pendaftaran.index');
+
+Route::post('/addpendaftaran', [FrontendController::class, 'addpendaftaran'])->name('addpendaftaran');
+Route::match(['get','post'],'/terbitkartu', [FrontendController::class, 'terbitkartu'])->name('terbitkartu');
+Route::match(['get','post'],'/downloadkartu/{id}', [FrontendController::class, 'downloadkartu'])->name('downloadkartu');
+
+
+Route::get('/rumussidikjari', [SidikJariController::class, 'rumussidikjari'])->name('rumussidikjari');
+Route::match(['get','post'],'getdatafromtoken', [SidikJariController::class, 'getdatafromtoken'])->name('getdatafromtoken');
+Route::match(['get','post'],'updatesidikjari', [SidikJariController::class, 'updatesidikjari'])->name('updatesidikjari');
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sales Contact Form</title>
+  <title>Form Pendaftaran SKCK</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
@@ -15,7 +15,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto cf-container">
-          <form action="" method="post">
+          <form action="{{ route('addpendaftaran') }}" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
             <div class="cf-cover">
               <center><img style="width:30%"
                   src="https://polresokuselatan.com/wp-content/uploads/2020/09/tribrata_PNG_12-removebg-preview-1-293x300.png">
@@ -31,89 +32,123 @@
               <div id="datadiri">
                 <p>Yang Bertanda Tangan dibawah ini</p>
                 <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Upload Foto diri</label><br>
+                      <image id="preview" src="{{ asset('frontend/assets/img/noimage.png') }}" style="width:200px;height:200px;">
+
+                      <input type="file" required="" placeholder="Nama Lengkap" name="foto" id="file"  onchange="tampilkanPreview(this,'preview')" class="form-control">
+                    </div>
+                  </div>
+                <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">Nama Lengkap</label>
-                    <input type="text" required="" placeholder="Enter First Name" class="form-control">
+                    <input type="text" required="" placeholder="Nama Lengkap" name="nama" class="form-control">
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-6">
                     <label for="">Tempat Lahir</label>
-                    <input type="text" placeholder="Enter Last Name" class="form-control">
+                    <input type="text" placeholder="Tempat Lahir" name="tempat_lahir" class="form-control">
                   </div>
                   <div class="col-md-6">
                     <label for="">Tgl Lahir</label>
-                    <input type="date" placeholder="Enter Last Name" class="form-control">
+                    <input type="date" placeholder="Tgl Lahir" name="tgllahir" class="form-control">
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-6">
                     <label for="">Agama</label>
-                    <input type="text" placeholder="Enter Your Company Name" class="form-control">
+                    <select name="agama" class="form-control">
+                      <option value="">--PILIH AGAMA----</option>
+                      <option value="ISLAM">ISLAM</option>
+                      <option value="KRISTEN">KRISTEN</option>
+                      <option value="KATOLIK">KATOLIK</option>
+                      <option value="HINDU">HINDU</option>
+                      <option value="BUDHA">BUDHA</option>
+                      <option value="KONGHUCU">KONGHUCU</option>
+                    </select>
                   </div>
                   <div class="col-md-6">
                     <label for="">Kebangsaan</label>
-                    <input type="text" placeholder="Enter Your Company Name" class="form-control">
+                    <input type="text" placeholder="Kebangsaan" name="kebangsaan" class="form-control">
                   </div>
 
                 </div>
                 <div class="form-row row">
                   <div class="col-md-6">
                     <label for="">Jenis Kelamin</label>
-                    <input type="text" placeholder="Enter Your Company Name" class="form-control">
+                      <div class="jk-space">
+                        <input type="radio" name="jk" value="Laki-laki">Laki-laki</input>
+                        <input type="radio" name="jk" value="Perempuan">Perempuan</input>
+                      </div>
+
+
                   </div>
                   <div class="col-md-6">
                     <label for="">Status Perkawinan</label>
-                    <input type="text" placeholder="Enter Your Company Name" class="form-control">
+                    <select required name="statuskawin" class="form-control" id="">
+                        <option value="">--Pilih Jenis--</option>
+                        <option value="Belum Kawin">Belum Kawin</option>
+                        <option value="Kawin">Kawin</option>
+                        <option value="Cerai Hidup">Cerai Hidup</option>
+                        <option value="Cerai Mati">Cerai Mati</option>
+                    </select>
                   </div>
 
                 </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">Pekerjaan</label>
-                    <input type="text" placeholder="Enter Email Address" class="form-control">
+                    <input type="text" placeholder="Pekerjaan" name="pekerjaan" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">Alamat saat ini</label>
-                    <textarea placeholder="Enter Message" rows="3" class="form-control"></textarea>
+                    <textarea placeholder="Alamat" rows="3" class="form-control" name="alamat" required></textarea>
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">KECAMATAN</label>
-                    <input type="text" placeholder="Enter Phone Name" class="form-control">
+                    <select class="form-control" name="kecamatan" required>
+                        <option value="">--Pilih Kecamatan--</option>
+                        @foreach($kecamatan as $i => $v)
+                        <option value="{{ $v->kecamatan }}">{{ $v->kecamatan }}</option>
+                        @endforeach
+                    </select>
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">NO KTP</label>
-                    <input type="text" placeholder="Enter Phone Name" class="form-control">
+                    <input type="text" placeholder="NO KTP" name="noktp" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">NO PASPORT</label>
-                    <input type="text" placeholder="Enter Phone Name" class="form-control">
+                    <input type="text" placeholder="NO PASPORT" name="nopasport" class="form-control" required>
+                    <p>jika tidak ada isi dengan kode "-"</p>
                   </div>
                 </div>
 
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">NO KITAS/KITAP</label>
-                    <input type="text" placeholder="Enter Phone Name" class="form-control">
+                    <input type="text" placeholder="NO KITAS/KITAP" name="kitap" class="form-control" required>
+                    <p>jika tidak ada isi dengan kode "-"</p>
                   </div>
                 </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">NO TELP/HP</label>
-                    <input type="text" placeholder="Enter Phone Name" class="form-control">
+                    <input type="text" placeholder="NO HP" name="nohp" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-row row right">
                   <div class="col-md-12">
-                    <a class="btn btn-success w-100">Selanjutnya</a>
+                    <a onclick="goto('datadiri','datasuis')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
                   </div>
                 </div>
               </div>
@@ -124,7 +159,7 @@
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">Nama</label>
-                    <input type="text" name="nmisu" required="" placeholder="Nama Istri/Suami" class="form-control">
+                    <input type="text" name="nmisu" placeholder="Nama Istri/Suami" class="form-control">
                   </div>
                 </div>
                 <div class="form-row row">
@@ -134,7 +169,15 @@
                   </div>
                   <div class="col-md-6">
                     <label for="">Agama</label>
-                    <input type="date" name="agisu" placeholder="Agama Istri/Suami" class="form-control">
+                    <select name="agisu" class="form-control">
+                      <option value="">--PILIH AGAMA----</option>
+                      <option value="ISLAM">ISLAM</option>
+                      <option value="KRISTEN">KRISTEN</option>
+                      <option value="KATOLIK">KATOLIK</option>
+                      <option value="HINDU">HINDU</option>
+                      <option value="BUDHA">BUDHA</option>
+                      <option value="KONGHUCU">KONGHUCU</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-row row">
@@ -159,10 +202,10 @@
 
                 <div  class="flex-row">
                   <div class="col-md-6">
-                    <a class="btn btn-success w-100">Sebelumnya</a>
+                    <a onclick="goto('datasuis','datadiri')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
                   </div>
                   <div class="col-md-6">
-                    <a class="btn btn-success w-100">Selanjutnya</a>
+                    <a onclick="goto('datasuis','databapak')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
                   </div>
 
                 </div>
@@ -217,10 +260,10 @@
 
                 <div  class="flex-row">
                   <div class="col-md-6">
-                    <a class="btn btn-success w-100">Sebelumnya</a>
+                    <a onclick="goto('databapak','datasuis')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
                   </div>
                   <div class="col-md-6">
-                    <a class="btn btn-success w-100">Selanjutnya</a>
+                    <a onclick="goto('databapak','dataibu')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
                   </div>
 
                 </div>
@@ -276,10 +319,194 @@
 
                 <div  class="flex-row">
                   <div class="col-md-6">
-                    <a class="btn btn-success w-100">Sebelumnya</a>
+                    <a onclick="goto('dataibu','databapak')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
                   </div>
                   <div class="col-md-6">
-                    <a class="btn btn-success w-100">Selanjutnya</a>
+                    <a onclick="goto('dataibu','saudarasekolah')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div id="saudarasekolah">
+                <h5>4. Saudara Sekandung</h5>
+
+
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">NAMA,UMUR,PEKERJAAN,ALAMAT</label>
+                    <textarea placeholder="contoh: 1 . indra,18 Tahun,Siswa,Bengkalis" name="saudara" rows="3" class="form-control"></textarea>
+                  </div>
+                </div>
+
+
+
+
+                <h5>5. Riwayat Sekolah</h5>
+
+
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">Jenjang Pendidikan , Tahun Lulus</label>
+                    <textarea placeholder="contoh: 1 . SMA , 2015" name="pendidikan" rows="3" class="form-control"></textarea>
+                  </div>
+                </div>
+
+
+                <div  class="flex-row">
+                  <div class="col-md-6">
+                    <a onclick="goto('saudarasekolah','dataibu')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
+                  </div>
+                  <div class="col-md-6">
+                    <a onclick="goto('saudarasekolah','perkara')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
+                  </div>
+
+                </div>
+              </div>
+
+              <div id="perkara">
+                <h5>II. Tersangkut Perkara Pidana dan Pelanggaran <i>Criminal case Lodged and Abuse</i></h5>
+
+
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">1. Perkara Pidana <i>(Criminal Case)</i> : </label>
+                    <label>a. Apakah Saudara pernah tersangkut perkara pidana ? <i>Have you ever caught in a criminal case ? </i></label>
+                    <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="pernahpidana" rows="3" class="form-control"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="col-md-12">
+                      <label>b. Dalam perkara apa ? <i>(In what kind of case)</i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="perkaraapa" rows="3" class="form-control"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label>c. Bagaimana putusannya dan Vonis hakim ?<i>(What is the decision of the judge and verdict ?)</i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="putusan" rows="3" class="form-control"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label>d. Apakah saudara sedang dalam proses perkara pidana ? Kasus apa ? <i>(Are you currently in the process of a criminal case ? what kind of case?)</i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="currentcriminal" rows="3" class="form-control"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label>e. Sampai sejauh mana proses hukumnya  ?<i>(what extend is the legal process ?)</i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="extendlegal" rows="3" class="form-control"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">2. Pelanggaran <i>(Violation)</i> : </label>
+                      <label>a. Apakah Saudara pernah melakukan pelanggaran hukum dan atau norma-norma sosial ? <i>Have you ever Violation of the law ? </i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="pernahmelanggar" rows="3" class="form-control" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label>b. Pelanggaran hukum atau norma-norma sosial apa saja ? <i>What kind of Violation of the law? </i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="bentukpelanggaran" rows="3" class="form-control" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label>c. Sampai sejauh mana prosesnya ? <i>To what extend is the process? </i></label>
+                      <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="extendprocess" rows="3" class="form-control" required></textarea>
+                    </div>
+                  </div>
+
+                  <h5>III. Informasi Lain <i>OTHER INFORMATION</i></h5>
+
+
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">1. Riwayat Pekerjaan / negara-negara yang pernah dikunjungi / <i>Work experience and countries you have ever visited before</i> (Sebutkan tahun berapa, dalam rangka apa dan negara mana yang dikunjungi): </label>
+
+                    <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="experiencecountry" rows="3" class="form-control"></textarea>
+                  </div>
+                </div>
+
+                 <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">2. Kesenangan / Kegemaran / Hobi / <i>Pleasure / Foudness / Hobbies</i> </label>
+
+                    <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="hobbies" rows="3" class="form-control"></textarea>
+                  </div>
+                </div>
+
+                  <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">3. Alamat yang mudah dihubungi (no. telpon)<i> Contact no. in case of emergency (phone number)</i> </label>
+
+                    <textarea placeholder="tuliskan jika ada jika tidak beri tanda  - " name="phonenumber" rows="3" class="form-control"></textarea>
+                  </div>
+                </div>
+
+
+
+                <h5>IV. Sponsor ( khusus orang asing / <i>foreigners</i>)</h5>
+
+
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">1. Disponsori Oleh <i>(Sponsored by)</i></label>
+                    <input type="text" class="form-control" name="sponsorby">
+                  </div>
+                </div>
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">2. Alamat Sponsor <i>(Sponsor Address)</i></label>
+                    <input type="text" class="form-control" name="alsponsor">
+                  </div>
+                </div>
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">3. telp. / fax <i>(Tel. / Fax)</i></label>
+                    <input type="text" class="form-control" name="telpfax">
+                  </div>
+                </div>
+                <div class="form-row row">
+                  <div class="col-md-12">
+                    <label for="">4. Jenis Usaha<i>(Type of Bussiness)</i></label>
+                    <input type="text" class="form-control" name="typebussiness">
+                  </div>
+                </div>
+
+                <div class="form-row row">
+                    <div class="col-md-12">
+                        <label for="">Keterangan diatas saya buat sebenarnya atas sumpah menurut kepercayaan saya, apabila dikemudian hari ternyata keterangan ini tidak benar maka saya sanggup dituntut berdasarkan hukum yane berlaku<i>I have made the above statement the truth according to my own belief, if in the near future this information trun out to be false then i could be prosecuted under applicable laws</i></label>
+                        <canvas  id="signature-pad" width="400" height="200"></canvas>
+                    </div>
+                    <div class="clear-btn" style="margin-left:5px;">
+                        <a onclick="clearsignature()" class="btn btn-primary" ><span> Clear </span></a>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div  class="flex-row">
+                  <div class="col-md-6">
+                    <a onclick="goto('perkara','saudarasekolah')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
+                  </div>
+                  <div class="col-md-6">
+                    <button style="width:100%" class="btn btn-success" type="submit">Simpan</button>
                   </div>
 
                 </div>
@@ -301,6 +528,108 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+  <script>
+       const canvas = document.getElementById("signature-pad");
+
+const signaturePad = new SignaturePad(canvas);
+
+// Returns signature image as data URL (see https://mdn.io/todataurl for the list of possible parameters)
+signaturePad.toDataURL(); // save image as PNG
+signaturePad.toDataURL("image/jpeg"); // save image as JPEG
+signaturePad.toDataURL("image/jpeg", 0.5); // save image as JPEG with 0.5 image quality
+signaturePad.toDataURL("image/svg+xml"); // save image as SVG data url
+
+// Return svg string without converting to base64
+
+
+
+// // Draws signature image from data URL (mostly uses https://mdn.io/drawImage under-the-hood)
+// // NOTE: This method does not populate internal data structure that represents drawn signature. Thus, after using #fromDataURL, #toData won't work properly.
+// signaturePad.fromDataURL("data:image/png;base64,iVBORw0K...");
+
+// // Draws signature image from data URL and alters it with the given options
+// signaturePad.fromDataURL("data:image/png;base64,iVBORw0K...", { ratio: 1, width: 400, height: 200, xOffset: 100, yOffset: 50 });
+
+// Returns signature image as an array of point groups
+const data = signaturePad.toData();
+
+// Draws signature image from an array of point groups
+signaturePad.fromData(data);
+
+// Draws signature image from an array of point groups, without clearing your existing image (clear defaults to true if not provided)
+signaturePad.fromData(data, { clear: false });
+
+// Clears the canvas
+signaturePad.clear();
+
+// Returns true if canvas is empty, otherwise returns false
+signaturePad.isEmpty();
+
+// Unbinds all event handlers
+signaturePad.off();
+
+// Rebinds all event handlers
+signaturePad.on();
+
+canvas.addEventListener("mouseup", function(event) {
+        // Do something when the user releases the mouse button
+        console.log("User has finished drawing on the canvas");
+    });
+
+
+     </script>
+
+     <script>
+        function getimage() {
+            var img = signaturePad.toDataURL();
+            console.log(img);
+        }
+
+        function clearsignature() {
+
+            signaturePad.clear();
+        }
+
+     </script>
+  <script>
+    function goto(from,to) {
+        document.getElementById(from).style.display = "none";
+        document.getElementById(to).style.display = "block";
+    }
+    </script>
+
+<script>
+    function tampilkanPreview(gambar,idpreview){
+      //membuat objek gambar
+        var gb = gambar.files;
+      //loop untuk merender gambar
+          for (var i = 0; i < gb.length; i++){
+            //bikin variabel
+              var gbPreview = gb[i];
+              var imageType = /image.*/;
+              var preview=document.getElementById(idpreview);
+              var reader = new FileReader();
+                if (gbPreview.type.match(imageType)) {
+                //jika tipe data sesuai
+                  preview.file = gbPreview;
+                  reader.onload = (function(element) {
+                    return function(e) {
+                        element.src = e.target.result;
+                    };
+                  })(preview);
+                  //membaca data URL gambar
+                  reader.readAsDataURL(gbPreview);
+                }
+                else{
+                //jika tipe data tidak sesuai
+                  alert("Type file tidak sesuai. Khusus image.");
+                  document.getElementById("file").value = "";
+                }
+          }
+    }
+    </script>
 
 </body>
 
