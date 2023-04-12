@@ -488,6 +488,7 @@
                     <div class="col-md-12">
                         <label for="">Keterangan diatas saya buat sebenarnya atas sumpah menurut kepercayaan saya, apabila dikemudian hari ternyata keterangan ini tidak benar maka saya sanggup dituntut berdasarkan hukum yane berlaku<i>I have made the above statement the truth according to my own belief, if in the near future this information trun out to be false then i could be prosecuted under applicable laws</i></label>
                         <canvas  id="signature-pad" width="400" height="200"></canvas>
+						<input type="hidden" name="ttd" id="ttdresult" value="">
                     </div>
                     <div class="clear-btn" style="margin-left:5px;">
                         <a onclick="clearsignature()" class="btn btn-primary" ><span> Clear </span></a>
@@ -573,9 +574,12 @@ signaturePad.off();
 // Rebinds all event handlers
 signaturePad.on();
 
-canvas.addEventListener("mouseup", function(event) {
+canvas.addEventListener("mouseleave", function(event) {
         // Do something when the user releases the mouse button
-        console.log("User has finished drawing on the canvas");
+		document.getElementById("ttdresult").value = signaturePad.toDataURL();
+        console.log("User has finished drawing on the canvas"+signaturePad.toDataURL());
+	
+		
     });
 
 

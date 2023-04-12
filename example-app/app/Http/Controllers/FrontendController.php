@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Pendaftaran;
 use PDF;
 use QrCode;
+use Str;
 use File;
 
 class FrontendController extends Controller
@@ -15,7 +16,15 @@ class FrontendController extends Controller
         return view('home.index');
     }
 
-
+	function toimg($enc){
+	$path = 'foto/'.Str::random(10).'.png';
+	$img = $enc; // Your data 'data:image/png;base64,AAAFBfj42Pj4';
+$img = str_replace('data:image/png;base64,', '', $img);
+$img = str_replace(' ', '+', $img);
+$data = base64_decode($img);
+file_put_contents(public_path($path), $data);
+return $path;
+	}		
     public function pendaftaran(){
         $kecamatan = DB::table('kecamatan')->orderby('kecamatan','ASC')->get();
         return view('home.pendaftaran',compact('kecamatan'));
@@ -99,7 +108,7 @@ class FrontendController extends Controller
             'telpfax'=>$r->telpfax,
             'typebussiness'=>$r->typebussiness,
             'foto'=>'foto/'. $imageName,
-            'ttd'=>'$r->ttd',
+            'ttd'=> $this->toimg($r->ttd),
             'qrcode'=>$number_form,
             'status'=>'T',
         ];
