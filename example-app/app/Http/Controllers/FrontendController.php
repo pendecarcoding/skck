@@ -26,8 +26,9 @@ file_put_contents(public_path($path), $data);
 return $path;
 	}		
     public function pendaftaran(){
-        $kecamatan = DB::table('kecamatan')->orderby('kecamatan','ASC')->get();
-        return view('home.pendaftaran',compact('kecamatan'));
+        $kecamatan   = DB::table('kecamatan')->orderby('kecamatan','ASC')->get();
+        $lokasicetak = DB::table('titik_skck')->get();
+        return view('home.pendaftaran',compact('kecamatan','lokasicetak'));
     }
     public function addpendaftaran(Request $r){
         $number_form = '';
@@ -69,8 +70,6 @@ return $path;
             'alamat'=>$r->alamat,
             'kecamatan'=>$r->kecamatan,
             'noktp'=>$r->noktp,
-            'nopasport'=>$r->nopasport,
-            'kitap'=>$r->kitap,
             'nohp'=>$r->nohp,
             'nmisu'=>$r->nmisu,
             'umisu'=>$r->umisu,
@@ -78,19 +77,6 @@ return $path;
             'keisu'=>$r->keisu,
             'pekisu'=>$r->pekisu,
             'alisu'=>$r->alisu,
-            'nmbpk'=>$r->nmbpk,
-            'umbpk'=>$r->umbpk,
-            'agbpk'=>$r->agbpk,
-            'kebpk'=>$r->kebpk,
-            'pekbpk'=>$r->pekbpk,
-            'albpk'=>$r->albpk,
-            'nmib'=>$r->nmib,
-            'umib'=>$r->umib,
-            'agib'=>$r->agib,
-            'keib'=>$r->keib,
-            'pekib'=>$r->pekib,
-            'alib'=>$r->alib,
-            'saudara'=>$r->saudara,
             'pendidikan'=>$r->pendidikan,
             'pernahpidana'=>$r->pernahpidana,
             'perkaraapa'=>$r->perkaraapa,
@@ -103,10 +89,6 @@ return $path;
             'experiencecountry'=>$r->experiencecountry,
             'hobbies'=>$r->hobbies,
             'phonenumber'=>$r->phonenumber,
-            'sponsorby'=>$r->sponsorby,
-            'alsponsor'=>$r->alsponsor,
-            'telpfax'=>$r->telpfax,
-            'typebussiness'=>$r->typebussiness,
             'foto'=>'foto/'. $imageName,
             'ttd'=> $this->toimg($r->ttd),
             'qrcode'=>$number_form,

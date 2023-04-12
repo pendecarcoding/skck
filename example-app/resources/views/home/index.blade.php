@@ -9,9 +9,17 @@
 </head>
 <body>
     <div class="fullscreen-image">
-        <img src="{{ asset('frontend/assets/gifpage.gif') }}" id="myGIF" alt="My GIF">
+        <img src="{{ asset('frontend/assets/pagehome.svg') }}" id="myGIF" alt="My GIF">
         <a href="{{ Route('pendaftaran.index') }}" style="color:white;" class="btn-daftar">Daftar</a>
+
       </div>
+
+
+      <div id="img-mobile">
+        <img src="{{ asset('frontend/assets/mobile.svg') }}" id="myGIF" alt="My GIF">
+    </div>
+
+
 
 
 

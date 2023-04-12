@@ -1,5 +1,5 @@
 body{
-    background-color: #febf58;
+
 }
 .session-title {
     padding-top: 30px;
@@ -36,7 +36,7 @@ body{
 }
 .cf-container .form-row .form-control {
   border-radius: 0px;
-  background-color: rgba(234, 233, 233, 0.78);
+  background-color: #fff;
 }
 .cf-container .agre p {
   font-size: 0.9rem;

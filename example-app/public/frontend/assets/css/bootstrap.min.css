@@ -74,9 +74,8 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #feffff;
     text-align: left;
-    background-color: #febf58;
 }
 
 [tabindex="-1"]:focus {
@@ -9939,5 +9938,7 @@ a.text-dark:hover {
         border: 1px solid #ddd !important
     }
 }
+
+
 
 /*# sourceMappingURL=bootstrap.min.css.map */

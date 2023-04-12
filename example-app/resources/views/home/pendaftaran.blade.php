@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
 </head>
 
-<body>
+<body style="background-color: #990d0a;color:white">
   <div class="container-fluid">
     <div class="container">
       <div class="row">
@@ -22,7 +22,7 @@
                   src="https://polresokuselatan.com/wp-content/uploads/2020/09/tribrata_PNG_12-removebg-preview-1-293x300.png">
               </center>
               <div class="session-title row">
-                <h2>FORMULIR PENDAFTARAN SKC ONLINE KABUPATEN BENGKALIS</h2>
+                <h2>FORMULIR PENDAFTARAN SKCK MASUK DESA POLRES BENGKALIS</h2>
                 <p>Mohon isi data dibawah ini dengan benar. Pemalsuan data dapat dikenakan SANKSI</p>
 
               </div>
@@ -34,11 +34,33 @@
                 <div class="form-row row">
                     <div class="col-md-12">
                       <label for="">Upload Foto diri</label><br>
-                      <image id="preview" src="{{ asset('frontend/assets/img/noimage.png') }}" style="width:200px;height:200px;">
-
+                      <center><image id="preview" src="{{ asset('frontend/assets/img/noimage.png') }}" style="width:200px;height:200px;"></image></center>
+                       <br>
                       <input type="file" required="" placeholder="Nama Lengkap" name="foto" id="file"  onchange="tampilkanPreview(this,'preview')" class="form-control">
                     </div>
                   </div>
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Jenis Pendaftaran</label>
+                      <select name="jenis_p" class="form-control" required>
+                        <option value="BARU">BARU</option>
+                        <option value="PERPANJANG">PERPANJANG</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Lokasi Pencetakan</label>
+                      <select name="lokasi_cetak" class="form-control" required>
+                         <option value="">--Pilih Lokasi Cetak--</option>
+                         @foreach($lokasicetak as $i => $v)
+                         <option value="{{ $v->id }}">{{ $v->alamat }}</option>
+                         @endforeach
+                      </select>
+                    </div>
+                  </div>
+
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">Nama Lengkap</label>
@@ -96,6 +118,37 @@
                   </div>
 
                 </div>
+                <h5>Ciri Ciri Fisik</h5>
+                <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Rambut</label>
+                      <input type="text" placeholder="Tuliskan ciri fisik untuk rambut" name="rambut" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Tinggi Badan</label>
+                      <input type="number" name="tinggi" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Muka</label>
+                      <input type="text" placeholder="Tuliskan ciri fisik bentuk muka" name="muka" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Tanda Istimewa</label>
+                      <input type="text" placeholder="Jika memiliki tanda istimewa tuliskan disini" name="tanda_istimewa" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="col-md-12">
+                      <label for="">Kulit</label>
+                      <input type="text" placeholder="Tuliskan Ciri ciri Kulit" name="kulit" class="form-control" required>
+                    </div>
+                </div>
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">Pekerjaan</label>
@@ -125,21 +178,8 @@
                     <input type="text" placeholder="NO KTP" name="noktp" class="form-control" required>
                   </div>
                 </div>
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">NO PASPORT</label>
-                    <input type="text" placeholder="NO PASPORT" name="nopasport" class="form-control" required>
-                    <p>jika tidak ada isi dengan kode "-"</p>
-                  </div>
-                </div>
 
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">NO KITAS/KITAP</label>
-                    <input type="text" placeholder="NO KITAS/KITAP" name="kitap" class="form-control" required>
-                    <p>jika tidak ada isi dengan kode "-"</p>
-                  </div>
-                </div>
+
                 <div class="form-row row">
                   <div class="col-md-12">
                     <label for="">NO TELP/HP</label>
@@ -205,145 +245,14 @@
                     <a onclick="goto('datasuis','datadiri')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
                   </div>
                   <div class="col-md-6">
-                    <a onclick="goto('datasuis','databapak')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
+                    <a onclick="goto('datasuis','perkara')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
                   </div>
 
                 </div>
               </div>
 
-              <div id="databapak">
-                <h5>2. Bapak Sendiri</h5>
-
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">Nama</label>
-                    <input type="text" name="nmbpk" required="" placeholder="Nama Bapak" class="form-control">
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-6">
-                    <label for="">Umur</label>
-                    <input type="text" name="umbpk" placeholder="Umur Bapak " class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="">Agama</label>
-                    <select name="agbpk" class="form-control">
-                      <option value="">--PILIH AGAMA----</option>
-                      <option value="ISLAM">ISLAM</option>
-                      <option value="KRISTEN">KRISTEN</option>
-                      <option value="KATOLIK">KATOLIK</option>
-                      <option value="HINDU">HINDU</option>
-                      <option value="BUDHA">BUDHA</option>
-                      <option value="KONGHUCU">KONGHUCU</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-6">
-                    <label for="">Kebangsaan</label>
-                    <input type="text" name="kebpk" placeholder="Kebangsaan Bapak" class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="">Pekerjaan</label>
-                    <input type="text" name="pekbpk" placeholder="Pekerjaan Bapak" class="form-control">
-                  </div>
-
-                </div>
-
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">Alamat saat ini</label>
-                    <textarea placeholder="Alamat Bapak" name="albpk" rows="3" class="form-control"></textarea>
-                  </div>
-                </div>
-
-
-                <div  class="flex-row">
-                  <div class="col-md-6">
-                    <a onclick="goto('databapak','datasuis')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
-                  </div>
-                  <div class="col-md-6">
-                    <a onclick="goto('databapak','dataibu')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div id="dataibu">
-                <h5>3. Ibu Sendiri</h5>
-
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">Nama</label>
-                    <input type="text" name="nmib" required="" placeholder="Nama Ibu" class="form-control">
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-6">
-                    <label for="">Umur</label>
-                    <input type="text" name="umib" placeholder="Umur Ibu " class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="">Agama</label>
-                    <select name="agib" class="form-control">
-                      <option value="">--PILIH AGAMA----</option>
-                      <option value="ISLAM">ISLAM</option>
-                      <option value="KRISTEN">KRISTEN</option>
-                      <option value="KATOLIK">KATOLIK</option>
-                      <option value="HINDU">HINDU</option>
-                      <option value="BUDHA">BUDHA</option>
-                      <option value="KONGHUCU">KONGHUCU</option>
-                    </select>
-
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-6">
-                    <label for="">Kebangsaan</label>
-                    <input type="text" name="keib" placeholder="Kebangsaan Ibu" class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="">Pekerjaan</label>
-                    <input type="text" name="pekib" placeholder="Pekerjaan Ibu" class="form-control">
-                  </div>
-
-                </div>
-
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">Alamat saat ini</label>
-                    <textarea placeholder="Alamat Ibu" name="alib" rows="3" class="form-control"></textarea>
-                  </div>
-                </div>
-
-
-                <div  class="flex-row">
-                  <div class="col-md-6">
-                    <a onclick="goto('dataibu','databapak')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
-                  </div>
-                  <div class="col-md-6">
-                    <a onclick="goto('dataibu','saudarasekolah')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
-                  </div>
-
-                </div>
-              </div>
-
-
-              <div id="saudarasekolah">
-                <h5>4. Saudara Sekandung</h5>
-
-
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">NAMA,UMUR,PEKERJAAN,ALAMAT</label>
-                    <textarea placeholder="contoh: 1 . indra,18 Tahun,Siswa,Bengkalis" name="saudara" rows="3" class="form-control"></textarea>
-                  </div>
-                </div>
-
-
-
-
-                <h5>5. Riwayat Sekolah</h5>
+              <div id="perkara">
+                <h5>2. Riwayat Sekolah</h5>
 
 
                 <div class="form-row row">
@@ -353,19 +262,6 @@
                   </div>
                 </div>
 
-
-                <div  class="flex-row">
-                  <div class="col-md-6">
-                    <a onclick="goto('saudarasekolah','dataibu')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
-                  </div>
-                  <div class="col-md-6">
-                    <a onclick="goto('saudarasekolah','perkara')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
-                  </div>
-
-                </div>
-              </div>
-
-              <div id="perkara">
                 <h5>II. Tersangkut Perkara Pidana dan Pelanggaran <i>Criminal case Lodged and Abuse</i></h5>
 
 
@@ -456,33 +352,6 @@
 
 
 
-                <h5>IV. Sponsor ( khusus orang asing / <i>foreigners</i>)</h5>
-
-
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">1. Disponsori Oleh <i>(Sponsored by)</i></label>
-                    <input type="text" class="form-control" name="sponsorby">
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">2. Alamat Sponsor <i>(Sponsor Address)</i></label>
-                    <input type="text" class="form-control" name="alsponsor">
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">3. telp. / fax <i>(Tel. / Fax)</i></label>
-                    <input type="text" class="form-control" name="telpfax">
-                  </div>
-                </div>
-                <div class="form-row row">
-                  <div class="col-md-12">
-                    <label for="">4. Jenis Usaha<i>(Type of Bussiness)</i></label>
-                    <input type="text" class="form-control" name="typebussiness">
-                  </div>
-                </div>
 
                 <div class="form-row row">
                     <div class="col-md-12">
@@ -504,7 +373,7 @@
 
                 <div  class="flex-row">
                   <div class="col-md-6">
-                    <a onclick="goto('perkara','saudarasekolah')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
+                    <a onclick="goto('perkara','datasuis')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
                   </div>
                   <div class="col-md-6">
                     <button style="width:100%" class="btn btn-success" type="submit">Simpan</button>

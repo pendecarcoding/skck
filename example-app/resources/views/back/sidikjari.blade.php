@@ -102,38 +102,9 @@
 
                                 <td colspan="2"><div id="nama-suis"></div></td>
                             </tr>
-                            <tr>
-                                <td><b>NAMA BAPAK SUAMI/ISTRI</b></td>
 
-                                <td colspan="2"><div id="nama-bapak"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>NAMA IBU SUAMI/ISTRI</b></td>
 
-                                <td colspan="2"><div id="nama-ibu"></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>ALAMAT</b></td>
 
-                                <td colspan="2"><div id="alamat-keluarga"></div></td>
-                            </tr>
-
-                            <tr>
-                                <td><b>SANAK SAUDARA YANG MENJADI TANGGUGAN</b></td>
-
-                                <td colspan="2">KOSONG</td>
-                            </tr>
-                            <tr>
-                                <td><b>ALAMAT</b></td>
-
-                                <td colspan="2">KOSONG</td>
-                            </tr>
-
-                            <tr>
-                                <td><b>ANAK ANAK & UMUR</b></td>
-
-                                <td colspan="2">KOSONG</td>
-                            </tr>
                             <tr>
                                 <td colspan="3" style="font-weight:bold">CIRI-CIRI BADAN</td>
                             </tr>
