@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sales Contact Form</title>
+  <title>Kartu Pendaftaran</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -56,6 +56,11 @@
                             <td>STATUS</td>
                             <td>:</td>
                             <td><b>@if($data->status=='T') MENDAFTAR @endif</b></td>
+                          </tr>
+                          <tr>
+                            <td>LOKASI CETAK</td>
+                            <td>:</td>
+                            <td><b>{{ $data->alamat_cetak }}</b></td>
                           </tr>
 
                       </table>

@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
   <title>Form Pendaftaran SKCK</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-  <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
+  <link href="{{ asset('frontend/assets/css/home.css') }}" rel="stylesheet" />
 </head>
 
 <body style="background-color: #990d0a;color:white">
@@ -55,7 +55,7 @@
                       <select name="lokasi_cetak" class="form-control" required>
                          <option value="">--Pilih Lokasi Cetak--</option>
                          @foreach($lokasicetak as $i => $v)
-                         <option value="{{ $v->id }}">{{ $v->alamat }}</option>
+                         <option value="{{ $v->id }}">{{ $v->alamat_cetak}}</option>
                          @endforeach
                       </select>
                     </div>
@@ -186,10 +186,12 @@
                     <input type="text" placeholder="NO HP" name="nohp" class="form-control" required>
                   </div>
                 </div>
+                <div class="space-button">
                 <div class="form-row row right">
                   <div class="col-md-12">
                     <a onclick="goto('datadiri','datasuis')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
                   </div>
+                </div>
                 </div>
               </div>
               <div id="datasuis">
@@ -239,7 +241,7 @@
                   </div>
                 </div>
 
-
+                <div class="space-button">
                 <div  class="flex-row">
                   <div class="col-md-6">
                     <a onclick="goto('datasuis','datadiri')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
@@ -248,6 +250,7 @@
                     <a onclick="goto('datasuis','perkara')" style="color:white" class="btn btn-success w-100 cl-white">Selanjutnya</a>
                   </div>
 
+                </div>
                 </div>
               </div>
 
@@ -370,16 +373,18 @@
 
 
 
+                <div class="space-button">
+                    <div  class="flex-row">
+                        <div class="col-md-6">
+                          <a onclick="goto('perkara','datasuis')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
+                        </div>
+                        <div class="col-md-6">
+                          <button style="width:100%" class="btn btn-success" type="submit">Simpan</button>
+                        </div>
 
-                <div  class="flex-row">
-                  <div class="col-md-6">
-                    <a onclick="goto('perkara','datasuis')" style="color:white" class="btn btn-success w-100">Sebelumnya</a>
-                  </div>
-                  <div class="col-md-6">
-                    <button style="width:100%" class="btn btn-success" type="submit">Simpan</button>
-                  </div>
-
+                      </div>
                 </div>
+
               </div>
 
               <!-- <div class="form-row row agre">
@@ -447,8 +452,8 @@ canvas.addEventListener("mouseleave", function(event) {
         // Do something when the user releases the mouse button
 		document.getElementById("ttdresult").value = signaturePad.toDataURL();
         console.log("User has finished drawing on the canvas"+signaturePad.toDataURL());
-	
-		
+
+
     });
 
 

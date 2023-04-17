@@ -2,7 +2,35 @@
  body, html {
     height: 100%;
   }
+  #datadiri{
+    display: block;
+  }
+  #datasuis{
+    display: none;
+  }
+  #databapak{
+    display: none;
+  }
+  #dataibu{
+    display: none;
+  }
+  #saudarasekolah{
+      display: none;
+    }
+    #perkara{
+      display: none;
+    }
+    .space-button{
+        margin-top: 20px;
+        margin-bottom: 20px;
 
+      }
+      #signature-pad {
+        background: #fff;
+        width: 100%;
+        height: 20vh;
+        cursor: crosshair;
+    }
 
  #img-mobile img{
     display: block;
@@ -10,18 +38,112 @@
     height: 100vh;
     object-fit: cover;
 }
+#img-mobile .btn-mobile{
+    color: white;
+
+    margin-left: 2%;
+    margin-right: 2%;
+    /* margin: 49px; */
+    display: block;
+}
+.but-mobile{
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+}
+
 .fullscreen-image {
     display: none;
 
   }
- @media screen and (min-width: 280px) and (max-width:480px) {
+  .flex-row{
+    display: flex;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+  }
+ @media screen and (min-width:290px) {
+    .session-title{
+        margin-top: 30px;
+    }
+    .session-title h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+    }
 
 
   }
   /* Laptop styles */
 @media screen and (min-width: 1024px) {
 
+    /*pendaftaran*/
+    .session-title {
+        padding-top: 30px;
+        margin: 0px;
+    }
+    .session-title h2 {
+      width: 100%;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .session-title p {
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .form-row a{
+        color: white;
+    }
+
+    .cf-container {
+      margin-top: 5%;
+    }
+    .cf-container .form-row {
+      margin-bottom: 20px;
+    }
+    .right{
+      float: right;
+    }
+    .cf-container .form-row label {
+      font-weight: 600;
+      font-size: 0.93rem;
+      margin-bottom: 4px;
+    }
+    .cf-container .form-row .form-control {
+      border-radius: 0px;
+      background-color: #fff;
+    }
+    .cf-container .agre p {
+      font-size: 0.9rem;
+    }
+
+    .flex-row{
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .jk-space{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    canvas#signature-pad {
+        background: #fff;
+        width: 100%;
+        height: 20vh;
+        cursor: crosshair;
+    }
+    .kartu-skck{
+        background-color: #fff;
+    }
+    /*# sourceMappingURL=style.css.map */
+
+
     #img-mobile{
+        display: none;
+    }
+
+    .btn-mobile{
         display: none;
     }
 

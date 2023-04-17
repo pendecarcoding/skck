@@ -24,7 +24,7 @@ $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 file_put_contents(public_path($path), $data);
 return $path;
-	}		
+	}
     public function pendaftaran(){
         $kecamatan   = DB::table('kecamatan')->orderby('kecamatan','ASC')->get();
         $lokasicetak = DB::table('titik_skck')->get();
@@ -64,6 +64,13 @@ return $path;
             'tgllahir'=>$r->tgllahir,
             'agama'=>$r->agama,
             'kebangsaan'=>$r->kebangsaan,
+            'jenis_pendaftaran'=>$r->jenis_p,
+            'lokasi_cetak'=>$r->lokasi_cetak,
+            'rambut'=>$r->rambut,
+            'tinggibadan'=>$r->tinggi,
+            'muka'=>$r->muka,
+            'tandaistimewa'=>$r->tanda_istimewa,
+            'kulit'=>$r->kulit,
             'jk'=>$r->jk,
             'statuskawin'=>$r->statuskawin,
             'pekerjaan'=>$r->pekerjaan,
@@ -109,7 +116,7 @@ return $path;
         public function terbitkartu(Request $r){
             try {
                 $id = (isset($_GET['id'])) ? $_GET['id']:'0';
-                $data = Pendaftaran::where('id',$id)->first();
+                $data = Pendaftaran::select('pendaftaran.id as id','pendaftaran.nama as nama','pendaftaran.nohp as nohp','pendaftaran.kecamatan as kecamatan','pendaftaran.alamat as alamat','pendaftaran.status as status','titik_skck.alamat_cetak as alamat_cetak')->where('pendaftaran.id',$id)->join('titik_skck','titik_skck.id','pendaftaran.lokasi_cetak')->first();
                 if(!empty($data)){
                     return view('home.kartupendaftaran',compact('data'));
                 }else{
@@ -126,7 +133,7 @@ return $path;
 
         public function downloadkartu($id=null){
             try {
-                $data = Pendaftaran::where('id',$id)->first();
+                $data = Pendaftaran::select('pendaftaran.id as id','pendaftaran.nama as nama','pendaftaran.nohp as nohp','pendaftaran.kecamatan as kecamatan','pendaftaran.alamat as alamat','pendaftaran.status as status','titik_skck.alamat_cetak as alamat_cetak')->where('pendaftaran.id',$id)->join('titik_skck','titik_skck.id','pendaftaran.lokasi_cetak')->first();
                 return view('home.kartu_pdf',compact('data'));
                 // $pdf = PDF::loadview('home.kartu_pdf',compact('data'))->setPaper('a5', 'potrait')->setWarnings(false);
 	            // return $pdf->download('NO_KARTU_PENDAFTARAN_SKCK'.$id.'.pdf');

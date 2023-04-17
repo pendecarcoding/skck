@@ -16,10 +16,10 @@
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
-			$this->button_action_style = "button_dropdown";
+			$this->button_action_style = "button_icon";
 			$this->button_add = false;
-			$this->button_edit = true;
-			$this->button_delete = true;
+			$this->button_edit = false;
+			$this->button_delete = false;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
@@ -343,7 +343,8 @@
 	    |
 	    */
 	    public function hook_query_index(&$query) {
-	        $query->where('status','T');
+                        $query->where('status','T');
+
 
 	    }
 
@@ -354,7 +355,9 @@
 	    |
 	    */
 	    public function hook_row_index($column_index,&$column_value) {
-	    	if($column_index=='15'){
+
+	    	If($column_index==15){
+
                 $column_value="Mendaftar";
             }
 	    }

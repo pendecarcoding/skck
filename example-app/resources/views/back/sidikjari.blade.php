@@ -111,27 +111,27 @@
                             <tr>
                                 <td >RAMBUT</td>
 
-                                <td colspan="2">KOSONG</td>
+                                <td colspan="2"><div id="rambut"></div></td>
                             </tr>
                             <tr>
                                 <td>TINGGI</td>
 
-                                <td colspan="2">KOSONG</td>
+                                <td colspan="2"><div id="tinggi"></div></td>
                             </tr>
                             <tr>
                                 <td>MUKA</td>
 
-                                <td colspan="2">KOSONG</td>
+                                <td colspan="2"><div id="muka"></div></td>
                             </tr>
                             <tr>
                                 <td>TANDA ISTIMEWA</td>
 
-                                <td colspan="2">KOSONG</td>
+                                <td colspan="2"><div id="tandaistimewa"></div></td>
                             </tr>
                             <tr>
                                 <td>KULIT</td>
 
-                                <td colspan="2">KOSONG</td>
+                                <td colspan="2"><div id="kulit"></div></td>
                             </tr>
                             <tr>
                                 <td style="font-weight:bold">RUMUS SIDIK JARI</td>
@@ -240,6 +240,11 @@
 </script>
 <script>
     var nama = document.getElementById("nama-data");
+    var kulit = document.getElementById("kulit");
+    var tinggi = document.getElementById("tinggi");
+    var muka = document.getElementById("muka");
+    var rambut = document.getElementById("rambut");
+    var tandaistimewa = document.getElementById("tandaistimewa");
     var noktp = document.getElementById("noktp-data");
     var nopasport = document.getElementById("nopasport-data");
     var agama = document.getElementById("agama-data");
@@ -281,6 +286,11 @@ input.addEventListener("change", function() {
             datascan.style.display="block";
             image.src= data.foto;
             nama.innerHTML = data.nama;
+            kulit.innerHTML = data.kulit;
+            tandaistimewa.innerHTML = data.tandaistimewa;
+            muka.innerHTML = data.muka;
+            tinggi.innerHTML = data.tinggibadan+' CM';
+            rambut.innerHTML = data.rambut;
             noktp.innerHTML = data.noktp;
             nopasport.innerHTML = data.nopasport;
             agama.innerHTML = data.agama;
@@ -289,9 +299,6 @@ input.addEventListener("change", function() {
             alamat.innerHTML = data.alamat;
             pekerjaan.innerHTML = data.pekerjaan;
             namasuis.innerHTML = data.nmisu;
-            namabapak.innerHTML = data.nmbpk;
-            namaibu.innerHTML = data.nmib;
-            alamatkl.innerHTML = 'Alamat Suami/Istri: '+data.alisu+' | Alamat Ayah: '+data.albpk+' | Alamat Ibu: '+data.alib;
             riwayatsekolah.innerHTML = data.pendidikan;
             hobbies.innerHTML = data.hobbies;
             nodaftar.value= data.id;
@@ -308,23 +315,24 @@ input.addEventListener("change", function() {
             datascan.style.display="block";
             image.src= data.foto;
             nama.innerHTML = data.nama;
+            kulit.innerHTML = data.kulit;
+            tandaistimewa.innerHTML = data.tandaistimewa;
+            muka.innerHTML = data.muka;
+            tinggi.innerHTML = data.tinggibadan+' CM';
+            rambut.innerHTML = data.rambut;
             noktp.innerHTML = data.noktp;
-            nopasport.innerHTML = data.nopasport;
             agama.innerHTML = data.agama;
             tgllahir.innerHTML = data.tgllahir;
             tempatlahir.innerHTML = data.tempat_lahir;
             alamat.innerHTML = data.alamat;
             pekerjaan.innerHTML = data.pekerjaan;
             namasuis.innerHTML = data.nmisu;
-            namabapak.innerHTML = data.nmbpk;
-            namaibu.innerHTML = data.nmib;
-            alamatkl.innerHTML = 'Alamat Suami/Istri: '+data.alisu+' | Alamat Ayah: '+data.albpk+' | Alamat Ibu: '+data.alib;
             riwayatsekolah.innerHTML = data.pendidikan;
             hobbies.innerHTML = data.hobbies;
             nodaftar.value= data.id;
 
             catatankriminal.innerHTML = 'Pernah Perkara : '+data.perkaraapa+', Perkara Saat ini : '+data.currentcriminal+', Bentuk Pelanggaran :'+data.bentukpelanggaran;
-
+            console.log(data.id);
 
         }
 

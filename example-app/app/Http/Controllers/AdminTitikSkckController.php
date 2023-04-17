@@ -15,7 +15,7 @@
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
-			$this->button_bulk_action = true;
+			$this->button_bulk_action = false;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
 			$this->button_edit = true;
@@ -31,21 +31,23 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Kecamatan","name"=>"id_kecamatan","join"=>"kecamatan,kecamatan"];
-			$this->col[] = ["label"=>"Alamat","name"=>"alamat"];
+			$this->col[] = ["label"=>"Alamat","name"=>"alamat_cetak"];
 			$this->col[] = ["label"=>"Url Google","name"=>"url_google"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-            $this->form[] = ['label'=>'Input-latitude-url Google','name'=>'input-latitude-url_google','type'=>'hidden','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Input-latitude-url Google','name'=>'input-latitude-url_google','type'=>'hidden','validation'=>'required','width'=>'col-sm-9'];
 			$this->form[] = ['label'=>'Input-longitude-url Google','name'=>'input-longitude-url_google','type'=>'hidden','validation'=>'required','width'=>'col-sm-9'];
 			$this->form[] = ['label'=>'Kecamatan','name'=>'id_kecamatan','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'kecamatan,kecamatan','datatable_exception'=>'id'];
-			$this->form[] = ['label'=>'Alamat','name'=>'alamat','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Alamat','name'=>'alamat_cetak','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Url Google','name'=>'url_google','type'=>'googlemaps','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
+			//$this->form[] = ['label'=>'Input-latitude-url Google','name'=>'input-latitude-url_google','type'=>'hidden','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Input-longitude-url Google','name'=>'input-longitude-url_google','type'=>'hidden','validation'=>'required','width'=>'col-sm-9'];
 			//$this->form[] = ['label'=>'Kecamatan','name'=>'id_kecamatan','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'kecamatan,kecamatan','datatable_exception'=>'id'];
 			//$this->form[] = ['label'=>'Alamat','name'=>'alamat','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Url Google','name'=>'url_google','type'=>'googlemaps','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
